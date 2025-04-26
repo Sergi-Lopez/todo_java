@@ -1,6 +1,6 @@
 package com.todoapp.todojava.api;
 
-import com.todoapp.todojava.dao.RolDao;
+import com.todoapp.todojava.dao.TodoDao;
 import com.todoapp.todojava.dao.UsuarioDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +14,8 @@ public class AppConfig {
 	}
 
 	@Bean
-	public RolDao rolDao() {
-		return new RolDao();
+	public TodoDao rolDao() {
+		return new TodoDao();
 	}
 
 }

@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "roles")
-public class Roles {
+@Table(name = "todo")
+public class Todo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,15 @@ public class Roles {
 	@Column(name = "NOMBRE", unique = true, nullable = false)
 	private String nombre;
 
-	public Roles() {
+	@Column(name = "COMPLETADO", nullable = false)
+	private boolean completado;
+
+	public Todo() {
 	}
 
-	public Roles(String nombre) {
+	public Todo(String nombre) {
 		this.nombre = nombre;
+		this.completado = false;
 	}
 
 	public int getId() {
@@ -39,5 +43,13 @@ public class Roles {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public boolean getCompletado() {
+		return completado;
+	}
+
+	public void setCompletado(boolean completado) {
+		this.completado = completado;
 	}
 }

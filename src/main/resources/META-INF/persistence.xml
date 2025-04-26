@@ -5,7 +5,7 @@
   <persistence-unit name="todo" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>com.todoapp.todojava.clases.Usuario</class>
-    <class>com.todoapp.todojava.clases.Roles</class>
+    <class>com.todoapp.todojava.clases.Todo</class>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo"/>
       <property name="jakarta.persistence.jdbc.user" value="todoapp"/>

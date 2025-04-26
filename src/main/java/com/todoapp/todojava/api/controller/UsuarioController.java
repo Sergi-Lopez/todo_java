@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import com.todoapp.todojava.dao.RolDao;
+import com.todoapp.todojava.dao.TodoDao;
 import com.todoapp.todojava.clases.Usuario;
 import com.todoapp.todojava.dao.UsuarioDao;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class UsuarioController {
 	private UsuarioDao usuarioDao;
 	
 	@Autowired
-	private RolDao rolDao;
+	private TodoDao todoDao;
 
 	@Autowired
 	public PasswordEncoder encoder() {
@@ -132,16 +132,5 @@ public class UsuarioController {
 			return "El usuario no existe";
 		}
 	}
-	
-	@GetMapping(value = "/currentRol", produces = "text/plain")
-	public String rolActual() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication != null && authentication.isAuthenticated()) {
-			int rol = usuarioDao.findByField("email", authentication.getName()).get(0).getIdRol();
-			String nombre = rolDao.buscar(rol).getNombre();
-			return nombre;
-		} else {
-			return "El rol no existe";
-		}
-	}
+
 }

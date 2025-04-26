@@ -1,63 +1,42 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="https://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<link href="/css/bootstrap.min.css" media="screen" rel="stylesheet"
-	type="text/css">
-<link href="/css/bootstrap-theme.min.css" media="screen"
-	rel="stylesheet" type="text/css">
-<style>
-.col-md-6 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iniciar Sesión - ToDo App</title>
+	<link rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles.css}">
 </head>
-
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6">
-				<img src=/img/inicio.jpg class="img-responsive" alt="logo"
-					width="100%">
-			</div>
-			<div class="col-md-6">
-				<form id="loginForm" th:action="@{/todo/login}" method='POST'>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="username">Usuario</label> <input
-							type="text" id="username" name="username" class="form-control"
-							required />
-					</div>
+<div class="login-container">
+	<h1>ToDo App</h1>
+	<h2>Iniciar Sesión</h2>
 
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="password">Contraseña</label> <input
-							type="password" id="password" name="password"
-							class="form-control" required />
-					</div>
-
-					<button data-mdb-ripple-init type="submit"
-						class="btn btn-primary btn-block mb-4" id="login">Sign in</button>
-				</form>
-			</div>
-		</div>
+	<div th:if="${param.error}" class="alert alert-danger">
+		Usuario o contraseña inválidos.
 	</div>
-	<script type="text/javascript" src="/js/global.js"></script>
-	<script>
-		
-		usuarioGlobal = null;
-		rolGlobal = null;
-		
-		function fVolver() {
-			window.history.back();
-		}
-		
-	</script>
-</body>
+	<div th:if="${param.logout}" class="alert alert-info">
+		Has cerrado sesión correctamente.
+	</div>
+	<div th:if="${registrationSuccess}" class="alert alert-success">
+		¡Registro completado! Ya puedes iniciar sesión.
+	</div>
 
+
+	<form th:action="@{/todo/login}" method="post">
+		<div class="form-group">
+			<label for="username">Usuario:</label>
+			<input type="text" id="username" name="username" class="form-control" required autofocus>
+		</div>
+		<div class="form-group">
+			<label for="password">Contraseña:</label>
+			<input type="password" id="password" name="password" class="form-control" required>
+		</div>
+		<button type="submit" class="btn btn-primary">Entrar</button>
+	</form>
+
+	<div class="register-link">
+		<p>¿No tienes cuenta? <a href="/todo/register" th:href="@{/todo/register}">Regístrate aquí</a></p>
+	</div>
+</div>
+</body>
 </html>

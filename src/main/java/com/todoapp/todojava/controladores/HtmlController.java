@@ -27,6 +27,11 @@ public class HtmlController {
 		return "index";
 	}
 
+	@GetMapping("/todo/register")
+	public String register() {
+		return "register";
+	}
+
 	@GetMapping("/todo/login")
 	public String login() {
 		return "login";
