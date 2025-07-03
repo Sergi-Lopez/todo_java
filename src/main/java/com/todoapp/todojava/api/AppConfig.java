@@ -14,7 +14,7 @@ public class AppConfig {
 	}
 
 	@Bean
-	public TodoDao rolDao() {
+	public TodoDao todoDao() {
 		return new TodoDao();
 	}
 

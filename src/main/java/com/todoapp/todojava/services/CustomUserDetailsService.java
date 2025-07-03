@@ -43,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		String formattedDateTime = now.format(formatter);
-		logger.info("Usuario: {} - Fecha/hora: {} - Login exitoso.", user.getUser(), formattedDateTime);
+		logger.info("Usuario: {} - Fecha/hora: {} - Login.", user.getUser(), formattedDateTime);
 
 		return new org.springframework.security.core.userdetails.User(
 				user.getUser(),
